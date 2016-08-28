@@ -1,0 +1,128 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_PetraGold.master.cs" Inherits="WebSitePetraGold.Views._PetraGold" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title>Petra Gold - Câmbio e Investimentos</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="PetraGold - Câmbio e Investimentos
+              A Petra Gold Câmbio e Investimentos está localizada no coração do centro financeiro do Rio de Janeiro e atua na área de serviços financeiros para pessoas físicas e jurídicas.
+Através de nossos parceiros e profissionais, atuamos com integridade e comprometimento nos diversos segmentos do mercado, como contratos de câmbio, remessa para pessoas físicas, papel moeda e outros produtos financeiros.
+Nossa equipe comercial está disponível para apresentar as soluções mais adequadas ao seu perfil.
+Entre em contato agora mesmo através do nosso formulário e um executivo de contas irá lhe atender de forma personalizada.
+              ">
+        <meta name="author" content="Waldivino Frederico">
+
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/style.css" rel="stylesheet">
+
+        <script src="../js/jquery.min.js"></script>
+
+        <script type="text/javascript">
+
+            // Dolar $ e Euro €
+            $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22EURBRL%2CUSDBRL%22&format=json&diagnostics=false&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function (data) {
+
+                var indices = '<div class="Cotacao"><p class="active "><strong>EURO</strong> R$ ' + money(data.query.results.rate[0].Rate) + '</p>' +
+                                '<p><strong>DOLAR</strong> R$ ' + money(data.query.results.rate[1].Rate) + '</p></div>';
+
+                $('#info').html(indices);
+
+            });
+
+            // IBOVESPA
+            $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20%28%22^BVSP%22%29&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function (data) {
+
+                var change = data.query.results.quote.Change;
+
+                var color = (change.indexOf('+') > -1) ? '#1f851a' : 'red';
+
+                var bovespa = '<div class="Cotacao"><p><strong>IBOVESPA</strong> ' + money(data.query.results.quote.LastTradePriceOnly) + ' <span style="color:' + color + '">' + data.query.results.quote.Change + '</span> </p></div>';
+
+                $('#info2').html(bovespa);
+
+            });
+
+            money = function (n) {
+                var
+                    c = 2,
+                    d = ',',
+                    t = '.',
+                    s = n < 0 ? "-" : "",
+                    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+                    j = (j = i.length) > 3 ? j % 3 : 0;
+                return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+            };
+
+        </script>
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="formConteudo" runat="server">
+        <div class="container-fluid conteudoSite">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default navbar-fixed-top topoMenu" role="navigation">
+                        <div class="navbar-header">
+
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/Views/Home.aspx">
+                                <img src="/imagens/PetraGoldLogo.jpg" class="logo" /></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <%--class="active"--%>
+                                <li>
+                                    <a href="/Views/QuemSomos.aspx">Quem somos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Câmbio</a>
+                                </li>
+                                <li>
+                                    <a href="#">Trabalhe conosco</a>
+                                </li>
+                                <li>
+                                    <a href="#">Fale Conosco</a>
+                                </li>
+                                <li>
+                                    <a href="#">Cadastro</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+
+            <asp:ContentPlaceHolder ID="Conteudo" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="rodape">
+                <address class="addressTopo">Remessas internacionais | Moedas | Ações | Clubes | Fundos | Renda Fixa</address>
+                <hr class="linhaRodape" />
+                <address class="addressMeio">Praça Floriano 55 - 8º andar - SL. 803 - Cinelândia - Rio de Janeiro- RJ - 20031-050</address>
+                <address class="addressBottom">Tel: +55 21 3179-0651 | www.petrogold.com.br</address>
+            </div>
+        </div>
+    </form>
+
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
+
+</body>
+</html>
