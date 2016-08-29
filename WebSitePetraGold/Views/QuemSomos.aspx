@@ -12,6 +12,8 @@
             <%--<li data-target="#myCarousel" data-slide-to="3"></li>--%>
         </ol>
 
+
+
         <!-- Wrapper for slides -->
         <div class="carousel-inner imagensCarousel" role="listbox">
             <div class="item active">

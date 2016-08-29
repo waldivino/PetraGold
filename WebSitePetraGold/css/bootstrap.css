@@ -147,12 +147,6 @@ figure {
   margin: 0;
 }
 
-fieldset {
-  padding: 0.35em 0.625em 0.75em;
-  margin: 0 2px;
-  border: 1px solid #c0c0c0;
-}
-
 legend {
   padding: 0;
   border: 0;
@@ -1956,6 +1950,8 @@ textarea.input-lg {
   }
 }
 
+
+
 .form-horizontal .control-label,
 .form-horizontal .radio,
 .form-horizontal .checkbox,
@@ -1969,6 +1965,12 @@ textarea.input-lg {
 .form-horizontal .form-group {
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.painelConteudo{
+    width: 90% !important;
+    margin-left: auto!important;
+    margin-right: auto!important;
 }
 
 .form-horizontal .form-group:before,

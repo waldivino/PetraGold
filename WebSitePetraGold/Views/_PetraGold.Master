@@ -25,7 +25,7 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
         <link href="../css/bootstrap-dialog.css" rel="stylesheet" />
         <link href="../css/font-awesome.css" rel="stylesheet" />
 
-        <script src="../js/jquery.min.js"></script>
+        <script src="../js/jquery-1.10.2.js"></script>
 
         <script src="../js/bootstrap.js"></script>
         <script src="../js/bootstrap-dialog.js"></script>
@@ -73,7 +73,7 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
 </head>
 <body>
     <form id="formConteudo" runat="server">
-        <div class="container-fluid conteudoSite">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-default navbar-fixed-top topoMenu" role="navigation">
@@ -128,7 +128,7 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
         </div>
     </form>
 
-    <script src="../js/bootstrap.min.js"></script>
+
     <script src="../js/scripts.js"></script>
 
 </body>

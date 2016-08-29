@@ -61,8 +61,12 @@ p {
 }
 
 .topoMenu {
-    /*padding-left: 134px;
-    padding-right: 150px;*/
     padding-left: 10%;
     padding-right: 10%;
+}
+
+.divContato{
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }

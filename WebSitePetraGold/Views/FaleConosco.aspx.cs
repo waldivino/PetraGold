@@ -17,6 +17,9 @@ namespace WebSitePetraGold.Views
 
         }
 
+
+
+
         [WebMethod]
         public static string EnviarContato(string Nome, string Telefone, string Email, string AreaDeinteresse, string Mensagem)
         {
@@ -27,16 +30,19 @@ namespace WebSitePetraGold.Views
             {
                 ContatoModel contato = new ContatoModel();
 
-                info = new InfoJSon();
-                info.Info = "ResultOk";
-                info.Data = "";
-                info.Message = JsonConvert.SerializeObject(contato); ;
-
                 contato.Nome = Nome;
                 contato.Telefone = Telefone;
                 contato.Email = Email;
                 contato.AreaDeinteresse = AreaDeinteresse;
                 contato.Mensagem = Mensagem;
+
+
+
+
+                info = new InfoJSon();
+                info.Info = "ResultOk";
+                info.Data = "";
+                info.Message = JsonConvert.SerializeObject(contato); ;
 
                 json = JsonConvert.SerializeObject(info);
 

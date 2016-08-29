@@ -1,25 +1,39 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/_PetraGold.Master" AutoEventWireup="true" CodeBehind="FaleConosco.aspx.cs" Inherits="WebSitePetraGold.Views.FaleConosco" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="Conteudo" runat="server">
+
+<asp:Content ID="ContentHeader" ContentPlaceHolderID="head" runat="server">
+
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <%-- <link href="../css/bootstrap.min.css" rel="stylesheet">--%>
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style2.css" rel="stylesheet">
+    <link href="../css/bootstrap-dialog.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+
+    <script src="../js/jquery-1.10.2.js"></script>
+
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap-dialog.js"></script>
+    <script src="../js/jquery.mask.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
 
-            //if (radioAr.checked) {
-            //    txtAR.disabled = false;
-            //    txtRenach.disabled = true;
-            //    txtPedido.disabled = true;
-            //    txtLote.disabled = true;
-            //    $('#TextAR').focus();
-            //}
+        $(document).ready(function () {
 
         });
 
         function EnviarContato() {
 
+            var Nome = $('.nome').val();
+            var Telefone = $('.telefone').val();
+            var Email = $('.email').val();
+            var AreaDeinteresse = $('.areaDeInteresse').val();
+            var Mensagem = $('.mensagem').val();
+
             $.ajax({
                 //URL -> url de Envio da informações
-                url: "Views/FaleConosco.aspx/EnviarContato",
+                url: "FaleConosco.aspx/EnviarContato",
 
                 //Type -> Qual o tipo de envio da informações
                 type: "POST",
@@ -40,8 +54,6 @@
                     var json = $.parseJSON(data.d);
 
                     if (json.Info != "Error") {
-
-                        $('.divContato').append(html);
 
                         BootstrapDialog.show({
                             title: 'Informação',
@@ -87,64 +99,72 @@
 
     </script>
 
+</asp:Content>
+
+
+
+
+<asp:Content ID="ContentBody" ContentPlaceHolderID="Conteudo" runat="server">
+
     <br />
 
     <div id="lblErro"></div>
 
-    <div class="form-horizontal divContato" style="display: block;">
-        <fieldset>
+    <div class="painelConteudo">
+        <div class="form-horizontal" style="display: block;">
+            <fieldset>
 
-            <!-- Form Name -->
-            <legend>Fale com a Petra Gold</legend>
+                <!-- Form Name -->
+                <legend>Fale com a Petra Gold</legend>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="nome">Nome:</label>
-                <div class="col-md-5">
-                    <input id="nome" name="nome" type="text" placeholder="Digite seu nome" class="form-control input-md" required="">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Nome:</label>
+                    <div class="col-md-5">
+                        <input id="nome" name="nome" type="text" placeholder="Digite seu nome" class="form-control input-md nome" required="" />
+                    </div>
                 </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="telefone">Telefone:</label>
-                <div class="col-md-4">
-                    <input id="telefone" class="telefone" name="telefone" type="text" placeholder="Digite seu telefone" class="form-control input-md" required="">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="telefone">Telefone:</label>
+                    <div class="col-md-4">
+                        <input id="telefone" name="telefone" type="text" placeholder="Digite seu telefone" class="form-control input-md telefone" required="" />
+                    </div>
                 </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="email">Email:</label>
-                <div class="col-md-5">
-                    <input id="email" name="email" type="text" placeholder="Digite o email" class="form-control input-md" required="">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="email">Email:</label>
+                    <div class="col-md-5">
+                        <input id="email" name="email" type="text" placeholder="Digite o email" class="form-control input-md email" required="" />
+                    </div>
                 </div>
-            </div>
 
-            <!-- Select Basic -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="areaDeInteresse">Área de interesse:</label>
-                <div class="col-md-4">
-                    <select id="areaDeInteresse" name="areaDeInteresse" class="form-control">
-                        <option value="Cambio">Câmbio</option>
-                        <option value="Investimento">Investimento</option>
-                    </select>
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="areaDeInteresse">Área de interesse:</label>
+                    <div class="col-md-4">
+                        <select id="areaDeInteresse" name="areaDeInteresse" class="form-control areaDeInteresse">
+                            <option value="Cambio">Câmbio</option>
+                            <option value="Investimento">Investimento</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Textarea -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="mensagem">Mensagem:</label>
-                <div class="col-md-4">
-                    <textarea class="form-control" id="mensagem" name="mensagem"></textarea>
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="mensagem">Mensagem:</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control mensagem" id="mensagem" name="mensagem"></textarea>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Button (Double) -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="enviar"></label>
-                <div class="col-md-8">
-                    <div id="btnEnviarContatos">
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="enviar"></label>
+                    <div class="col-md-8">
+                        <div id="btnEnviarContatos">
                             <button
                                 type="button"
                                 id="btnEnviarContato"
@@ -154,11 +174,12 @@
                                 Enviar contato
                             </button>
                         </div>
-                    <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
+                        <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
+                    </div>
                 </div>
-            </div>
 
-        </fieldset>
+            </fieldset>
+        </div>
     </div>
 
     <script type="text/javascript">
