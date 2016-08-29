@@ -1,0 +1,68 @@
+p {
+    font-size: 12px !important;
+    text-align: justify;
+}
+
+.logo {
+    height: 51px;
+    width: 195px;
+    margin-top: -15px !important;
+}
+
+.rodape {
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 2px;
+    font-size: 10px;
+}
+
+.addressTopo {
+    color: #084D6E;
+    height: 2px;
+}
+
+.addressBottom {
+    height: 0px;
+    padding-top: 20px;
+}
+
+.addressMeio {
+    height: 0px;
+    margin-top: -18px;
+}
+
+.linhaRodape {
+    border-top-width: 2px;
+    padding-top: 2px;
+    height: 0px;
+}
+
+.topoHome {
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagensCarousel img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagensCarousel {
+    background-color: #084D6E !important;
+}
+
+.conteudoSite {
+    width: 80% !important;
+}
+
+.topoMenu {
+    /*padding-left: 134px;
+    padding-right: 150px;*/
+    padding-left: 10%;
+    padding-right: 10%;
+}

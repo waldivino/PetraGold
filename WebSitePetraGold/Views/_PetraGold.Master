@@ -21,8 +21,15 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
 
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/style2.css" rel="stylesheet">
+        <link href="../css/bootstrap-dialog.css" rel="stylesheet" />
+        <link href="../css/font-awesome.css" rel="stylesheet" />
 
         <script src="../js/jquery.min.js"></script>
+
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/bootstrap-dialog.js"></script>
+        <script src="../js/jquery.mask.js"></script>
 
         <script type="text/javascript">
 
@@ -92,7 +99,7 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                                     <a href="#">Trabalhe conosco</a>
                                 </li>
                                 <li>
-                                    <a href="#">Fale Conosco</a>
+                                    <a href="/Views/FaleConosco.aspx">Fale Conosco</a>
                                 </li>
                                 <li>
                                     <a href="#">Cadastro</a>

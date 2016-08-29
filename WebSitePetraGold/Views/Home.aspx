@@ -102,7 +102,7 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                     </p>
 
                     <p>
-                        <a class="btn" href="#">Contato »</a>
+                        <a class="btn" href="/Views/FaleConosco.aspx">Contato »</a>
                     </p>
                 </div>
             </div>
