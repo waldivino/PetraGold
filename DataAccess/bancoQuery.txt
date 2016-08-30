@@ -1,0 +1,15 @@
+﻿
+Use petragold;
+
+create table faleConosco(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	Nome varchar(255),
+    Telefone varchar(255),
+    Email varchar(555),
+    AreaDeinteresse varchar(255),
+    Mensagem varchar(5000));
+
+
+
+	//Inserts tabela FaleConosco
+	insert into faleConosco(Nome, Telefone, Email, AreaDeinteresse, AreaDeinteresse, Mensagem) values()

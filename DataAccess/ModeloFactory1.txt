@@ -1,0 +1,551 @@
+﻿using System;
+using ABnoteConnection;
+using System.Collections.Generic;
+using System.Data.Common;
+
+public class DALAplicacao
+{
+
+    INFOFabrica fabrica = null;
+    DbDataReader dataReader = null;
+
+    public DALAplicacao()
+    {
+        fabrica = ConnectionFactory.GetConnection();
+    }
+
+    public DALAplicacao(INFOFabrica fab)
+    {
+        fabrica = fab;
+    }
+
+    //Lista todas as aplicações cadastradas no banco de dados
+    public List<InfoAplicacao> dbListarAplicacoes()
+    {
+
+        DbDataReader dataReader = null;
+        List<InfoAplicacao> lista = null;
+        InfoAplicacao objAplicacao = null;
+
+        try
+        {
+            fabrica.Comando.CommandText = "SELECT "
+                + "APL_INT_ID_APLICACAO, "
+                + "APL_STR_NM_APLICACAO, "
+                + "APL_STR_NR_VERSAO, "
+                + "APL_STR_CD_CODIGO "
+                + "FROM ACE_APLICACAO";
+
+            dataReader = fabrica.SqlExeConsulta(fabrica);
+
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    lista = new List<InfoAplicacao>();
+                    while (dataReader.Read())
+                    {
+                        objAplicacao = new InfoAplicacao();
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_INT_ID_APLICACAO")) == false)
+                        {
+                            objAplicacao.Id = dataReader.GetInt32(dataReader.GetOrdinal("APL_INT_ID_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NM_APLICACAO")) == false)
+                        {
+                            objAplicacao.NomeAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NM_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NR_VERSAO")) == false)
+                        {
+                            objAplicacao.VersaoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NR_VERSAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_CD_CODIGO")) == false)
+                        {
+                            objAplicacao.CodigoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_CD_CODIGO"));
+                        }
+                        lista.Add(objAplicacao);
+                    }
+                }
+            }
+
+            return lista;
+
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+
+    }
+
+    //Lista a aplicação cadastrada no banco de dados de acordo com o Id
+    public List<InfoAplicacao> dbListarAplicacaoPorId(Int32 Id)
+    {
+
+        DbDataReader dataReader = null;
+        InfoAplicacao objAplicacao = null;
+        List<InfoAplicacao> lista = null;
+
+        try
+        {
+            fabrica.Comando.CommandText = "SELECT "
+                + "APL_STR_CD_CODIGO, "
+                + "APL_INT_ID_APLICACAO, "
+                + "APL_STR_NM_APLICACAO, "
+                + "APL_STR_NR_VERSAO "
+                + "FROM ACE_APLICACAO "
+                + "WHERE "
+                + "APL_INT_ID_APLICACAO = " + Id.ToString();
+
+            dataReader = fabrica.SqlExeConsulta(fabrica);
+
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    lista = new List<InfoAplicacao>();
+                    while (dataReader.Read())
+                    {
+                        objAplicacao = new InfoAplicacao();
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_INT_ID_APLICACAO")) == false)
+                        {
+                            objAplicacao.Id = dataReader.GetInt32(dataReader.GetOrdinal("APL_INT_ID_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NM_APLICACAO")) == false)
+                        {
+                            objAplicacao.NomeAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NM_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NR_VERSAO")) == false)
+                        {
+                            objAplicacao.VersaoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NR_VERSAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_CD_CODIGO")) == false)
+                        {
+                            objAplicacao.CodigoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_CD_CODIGO"));
+                        }
+                        lista.Add(objAplicacao);
+                    }
+                }
+            }
+
+            return lista;
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+    }
+
+    //Obtem um objeto Aplicação através do Id
+    public InfoAplicacao dbObterAplicacaoPorId(Int32 Id)
+    {
+
+        DbDataReader dataReader = null;
+        InfoAplicacao objAplicacao = null;
+
+        try
+        {
+            fabrica.Comando.CommandText = "SELECT "
+                + "APL_STR_CD_CODIGO, "
+                + "APL_INT_ID_APLICACAO, "
+                + "APL_STR_NM_APLICACAO, "
+                + "APL_STR_NR_VERSAO "
+                + "FROM ACE_APLICACAO "
+                + "WHERE "
+                + "APL_INT_ID_APLICACAO = " + Id.ToString();
+
+            dataReader = fabrica.SqlExeConsulta(fabrica);
+
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    objAplicacao = new InfoAplicacao();
+                    while (dataReader.Read())
+                    {
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_INT_ID_APLICACAO")) == false)
+                        {
+                            objAplicacao.Id = dataReader.GetInt32(dataReader.GetOrdinal("APL_INT_ID_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NM_APLICACAO")) == false)
+                        {
+                            objAplicacao.NomeAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NM_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NR_VERSAO")) == false)
+                        {
+                            objAplicacao.VersaoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NR_VERSAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_CD_CODIGO")) == false)
+                        {
+                            objAplicacao.CodigoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_CD_CODIGO"));
+                        }
+                    }
+                }
+            }
+
+            return objAplicacao;
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+    }
+
+    public Int32 dbObterIDAplicacaoPorCodigo(string codigoAplicacao)
+    {
+
+        DbDataReader dataReader = null;
+        Int32 idAplicacao = 0;
+
+        try
+        {
+            fabrica.Comando.CommandText = "SELECT "
+                + "APL_INT_ID_APLICACAO "
+                + "FROM ACE_APLICACAO "
+                + "WHERE APL_STR_CD_CODIGO = '" + codigoAplicacao + "'";
+
+            dataReader = fabrica.SqlExeConsulta(fabrica);
+
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_INT_ID_APLICACAO")) == false)
+                        {
+                            idAplicacao = dataReader.GetInt32(dataReader.GetOrdinal("APL_INT_ID_APLICACAO"));
+                        }
+                    }
+                }
+            }
+
+            return idAplicacao;
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+    }
+
+
+    //Usado para consultar a Aplicação por nome ou parte do nome
+    public List<InfoAplicacao> dbListarAplicacaoPorNome(string Nome)
+    {
+
+        DbDataReader dataReader = null;
+        List<InfoAplicacao> lista = null;
+        InfoAplicacao objAplicacao = null; ;
+
+        try
+        {
+            fabrica.Comando.CommandText = "SELECT * FROM ACE_APLICACAO "
+                + "WHERE UPPER(APL_STR_NM_APLICACAO) LIKE UPPER(" + (char)39 + "%" + Nome + "%" + (char)39 + ")";
+
+            dataReader = fabrica.SqlExeConsulta(fabrica);
+
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    lista = new List<InfoAplicacao>();
+                    while (dataReader.Read())
+                    {
+                        objAplicacao = new InfoAplicacao();
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_INT_ID_APLICACAO")) == false)
+                        {
+                            objAplicacao.Id = dataReader.GetInt32(dataReader.GetOrdinal("APL_INT_ID_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NM_APLICACAO")) == false)
+                        {
+                            objAplicacao.NomeAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NM_APLICACAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_NR_VERSAO")) == false)
+                        {
+                            objAplicacao.VersaoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_NR_VERSAO"));
+                        }
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_STR_CD_CODIGO")) == false)
+                        {
+                            objAplicacao.CodigoAplicacao = dataReader.GetString(dataReader.GetOrdinal("APL_STR_CD_CODIGO"));
+                        }
+                        lista.Add(objAplicacao);
+                    }
+                }
+            }
+            return lista;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+    }
+
+    //Retorna o Id da última aplicação gravada no banco de dados
+    public Int32 dbListarUltimaAplicacaoGravada()
+    {
+
+        DbDataReader dataReader = null;
+        Int32 IdAplicacao = default(Int32);
+
+        try
+        {
+            fabrica.Comando.CommandText = "SELECT MAX(APL_INT_ID_APLICACAO) AS " + (char)34 + "APL_INT_ID_APLICACAO" + (char)34 + "FROM ACE_APLICACAO";
+
+            dataReader = fabrica.SqlExeConsulta(fabrica);
+
+
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        if (dataReader.IsDBNull(dataReader.GetOrdinal("APL_INT_ID_APLICACAO")) == false)
+                        {
+                            IdAplicacao = dataReader.GetInt32(dataReader.GetOrdinal("APL_INT_ID_APLICACAO"));
+                        }
+                    }
+                }
+            }
+
+            return IdAplicacao;
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+    }
+
+
+
+    //Efetua a atualização dos dados da aplicação
+    public void dbAtualizarDadosAplicacao(Int32 Id, string Codigo, string Nome, string versao)
+    {
+
+        string sqlVerificaAlteracao = string.Empty;
+        DbDataReader dataReader = null;
+        string sql = string.Empty;
+
+        try
+        {
+            
+
+            sqlVerificaAlteracao = "SELECT APL_STR_NM_APLICACAO, APL_STR_CD_CODIGO "
+                                   + "FROM ACE_APLICACAO "
+                                   + "WHERE "
+                                   + "APL_INT_ID_APLICACAO <> " + Id.ToString() + " AND "
+                                   + "(UPPER(APL_STR_NM_APLICACAO) = UPPER('" + Nome + "')"
+                                   + "OR "
+                                   + "UPPER(APL_STR_CD_CODIGO) = UPPER('" + Codigo + "'))";
+
+            dataReader = fabrica.SqlExeConsultaPassandoQuery(fabrica, sqlVerificaAlteracao);
+
+
+            //Verifico se o Nome ou Código da Aplicação já estão cadastrados no banco de dados.
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    throw new BLLException("Nome ou Código da Aplicação já cadastrados.");
+                }
+            }
+            fabrica.Conexao.Close();
+
+
+
+            sql = "UPDATE ACE_APLICACAO "
+                + "SET "
+                + "APL_STR_CD_CODIGO = " + (char)39 + Codigo + (char)39 + ", "
+                + "APL_STR_NM_APLICACAO = " + (char)39 + Nome + (char)39 + ", "
+                + "APL_STR_NR_VERSAO = " + (char)39 + versao + (char)39
+                + "WHERE "
+                + "APL_INT_ID_APLICACAO = " + Id.ToString();
+
+            fabrica.fncExecutarSQL(fabrica, sql);
+        }
+        catch (BLLException ex)
+        {
+            throw ex;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+    }
+
+    //Exclui a Aplicação, os Perfis associados, Funcionalidades e associações de usuário a Aplicação
+    public void dbExcluirAplicacao(Int32 Id, DbTransaction trans)
+    {
+
+        //string sqlPerfisAplicacao = string.Empty;
+        //string sqlFuncionalidadesAplicacao = string.Empty;
+
+        DALPerfil dbPerfil = null;
+        DALFuncionalidade dbFuncionalidade = null;
+        string sql = string.Empty;
+
+        try
+        {
+
+            //Exclui da tabela ACE_PERFIL_MENUITENS e ACE_PERFIL
+            dbPerfil = new DALPerfil(fabrica);
+            dbPerfil.dbExcluirPerfilAplicacao(Id, trans);
+
+            //Exclui as funcioalidades associadas a Aplicação
+            dbFuncionalidade = new DALFuncionalidade(fabrica);
+            dbFuncionalidade.dbExcluirFuncionalidadeAplicacao(Id, trans);
+
+            //Apaga a aplicação
+            sql = "DELETE FROM ACE_APLICACAO "
+                + "WHERE APL_INT_ID_APLICACAO = " + Id.ToString();
+
+            if (trans != null)
+                fabrica.fncExecutarSQLTransaction(fabrica, trans, sql);
+
+            else
+                fabrica.fncExecutarSQL(fabrica, sql);
+        }
+        catch (Exception ex)
+        {
+            if (trans != null)
+            {
+                trans.Rollback();
+            }
+            throw ex;
+        }
+        finally
+        {
+            //if (db != null)
+            //    db.Close();
+            dbPerfil = null;
+        }
+    }
+
+    //Grava uma nova Aplicação no banco de dados
+    public void dbGravarAplicacao(string Codigo, string Nome, string Versao)
+    {
+
+        string sqlVerificaDuplicidade = string.Empty;
+        string sql = string.Empty;
+        DbDataReader dataReader = null;
+
+        try
+        {
+            sqlVerificaDuplicidade = "SELECT APL_STR_NM_APLICACAO, APL_STR_CD_CODIGO "
+                                   + "FROM ACE_APLICACAO "
+                                   + "WHERE "
+                                   + "UPPER(APL_STR_NM_APLICACAO) = UPPER('" + Nome + "') "
+                                   + "OR "
+                                   + "UPPER(APL_STR_CD_CODIGO) = UPPER('" + Codigo + "')";
+
+            
+
+            dataReader = fabrica.SqlExeConsultaPassandoQuery(fabrica, sqlVerificaDuplicidade);
+
+            //Verifico se o Nome ou Código da Aplicação já estão cadastrados no banco de dados.
+            if (dataReader != null)
+            {
+                if (dataReader.HasRows)
+                {
+                    throw new BLLException("Nome ou Código da Aplicação já cadastrados.");
+                }
+            }
+            fabrica.Conexao.Close();
+
+
+            sql = "INSERT INTO ACE_APLICACAO "
+                + "(APL_STR_NM_APLICACAO, APL_STR_NR_VERSAO, APL_STR_CD_CODIGO) "
+                + "VALUES "
+                + "(" + (char)39 + Nome + (char)39 + ", " + (char)39 + Versao + (char)39 + ", " + (char)39 + Codigo + (char)39 + ")";
+
+            fabrica.fncExecutarSQL(fabrica, sql);
+
+        }
+        catch (BLLException ex)
+        {
+            throw ex;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (dataReader != null)
+            {
+                dataReader.Close();
+                dataReader.Dispose();
+            }
+            fabrica.Conexao.Close();
+        }
+
+    }
+
+
+}
