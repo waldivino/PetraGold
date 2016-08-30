@@ -19,9 +19,6 @@ namespace WebSitePetraGold.Views
 
         }
 
-
-
-
         [WebMethod]
         public static string EnviarContato(string Nome, string Telefone, string Email, string AreaDeinteresse, string Mensagem)
         {

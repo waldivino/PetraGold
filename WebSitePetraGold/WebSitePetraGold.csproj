@@ -249,9 +249,9 @@
       <Project>{24f235ed-8267-4556-9adb-8b236b0c3fac}</Project>
       <Name>ModelPetraGold</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PetraGoldComum\PetraGoldComum.csproj">
+    <ProjectReference Include="..\PetraGoldComum\ComumPetraGold.csproj">
       <Project>{d6fa701f-d4b6-4b72-89d9-830bce2fcc51}</Project>
-      <Name>PetraGoldComum</Name>
+      <Name>ComumPetraGold</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

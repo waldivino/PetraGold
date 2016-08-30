@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelPetraGold.Model;
 using DataAccess.DAL;
+using SendEmailPetraGold.Control;
 
 namespace PetraGoldComum.BLL
 {
@@ -18,7 +19,32 @@ namespace PetraGoldComum.BLL
 
             status = dal.BDEnviarContato(info);
 
+            //Envio de email
+            InfoEmail infoEmail = new InfoEmail();
+            infoEmail.destinatario = "wfredericomp@gmail.com";
+            infoEmail.mensagem = "Senhor: "+ info.Nome + " <h2>Email enviado do site Petra Gold !</h2>";
+
+            abstractEnviarEmail(infoEmail);
+
             return status;
+        }
+
+        public override bool abstractEnviarEmail(InfoEmail info)
+        {
+            try
+            {
+                bool status = false;
+                SendEmail email = new SendEmail();
+
+                status = email.enviarEmail(info);
+
+                return status;
+            }
+            catch
+            {
+                throw;
+            }
+            
         }
     }
 }

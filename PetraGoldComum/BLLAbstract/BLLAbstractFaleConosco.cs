@@ -10,5 +10,6 @@ namespace PetraGoldComum.BLLAbstract
     public abstract class BLLAbstractFaleConosco
     {
         public abstract bool abstractEnviarContato(InfoContato info);
+        public abstract bool abstractEnviarEmail(InfoEmail info);
     }
 }

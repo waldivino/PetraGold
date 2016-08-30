@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSitePetraGold", "WebSitePetraGold\WebSitePetraGold.csproj", "{7E346AD5-74B9-4E2A-B1F7-A03B7E339DE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cotacoes", "Cotacoes\Cotacoes.csproj", "{43374DF0-7163-43E4-8E50-62F5BABE2E7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CotacoesPetraGold", "Cotacoes\CotacoesPetraGold.csproj", "{43374DF0-7163-43E4-8E50-62F5BABE2E7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessFactoryPetraGold", "DataAccess\DataAccessFactoryPetraGold.csproj", "{C5DBD1FC-1930-475C-AD71-12BB18ABF325}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetraGoldComum", "PetraGoldComum\PetraGoldComum.csproj", "{D6FA701F-D4B6-4B72-89D9-830BCE2FCC51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComumPetraGold", "PetraGoldComum\ComumPetraGold.csproj", "{D6FA701F-D4B6-4B72-89D9-830BCE2FCC51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelPetraGold", "ModelPetraGold\ModelPetraGold.csproj", "{24F235ED-8267-4556-9ADB-8B236B0C3FAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendEmailPetraGold", "SendEmailPetraGold\SendEmailPetraGold.csproj", "{B57187E1-B351-4E56-9C8B-EF53B483B07D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{24F235ED-8267-4556-9ADB-8B236B0C3FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24F235ED-8267-4556-9ADB-8B236B0C3FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24F235ED-8267-4556-9ADB-8B236B0C3FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57187E1-B351-4E56-9C8B-EF53B483B07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57187E1-B351-4E56-9C8B-EF53B483B07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57187E1-B351-4E56-9C8B-EF53B483B07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57187E1-B351-4E56-9C8B-EF53B483B07D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
