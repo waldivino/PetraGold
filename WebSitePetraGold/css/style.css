@@ -247,7 +247,7 @@ header div#login {
 
 
 .Content {
-    width: 1024px;
+    width: 90% !important;
     margin-top: 0;
     margin-right: auto;
     margin-bottom: 0;
@@ -258,7 +258,7 @@ header div#login {
 }
 
 article {
-    width: 1024px;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -505,8 +505,8 @@ fieldset {
     transition: all 0.3s;
     color: #666;
     margin-top: 100px !important;
-    margin-left: auto!important;
-    margin-right: auto!important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
     fieldset h2 {
@@ -2614,3 +2614,10 @@ button.close {
     }
 
 /* Fim dos Style de Title */
+
+.centralizarBotoes{
+    width: 100%;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    padding: 20px;
+}

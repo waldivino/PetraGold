@@ -31,6 +31,78 @@
             var AreaDeinteresse = $('.areaDeInteresse').val();
             var Mensagem = $('.mensagem').val();
 
+            if (Nome.length < 5) {
+                BootstrapDialog.show({
+                    title: 'Informação',
+                    message: 'Digite seu nome, mínimo 5 letras!',
+                    buttons: [{
+                        label: 'Entendi!',
+                        cssClass: 'btn-primary',
+                        action: function (dialogItself) {
+                            dialogItself.close();
+                            $('.btnEnviarContato').button('reset');
+                            $('.nome').focus();
+                        }
+                    }]
+                });
+                
+                return false;
+            }
+
+            if (Telefone.length < 12) {
+                BootstrapDialog.show({
+                    title: 'Informação',
+                    message: 'Digite seu telefone corretamente!',
+                    buttons: [{
+                        label: 'Entendi!',
+                        cssClass: 'btn-primary',
+                        action: function (dialogItself) {
+                            dialogItself.close();
+                            $('.btnEnviarContato').button('reset');
+                            $('.telefone').focus();
+                        }
+                    }]
+                });
+                Telefone.focus();
+                return false;
+            }
+
+            if (Email.length < 6) {
+                BootstrapDialog.show({
+                    title: 'Informação',
+                    message: 'Digite seu email corretamente!',
+                    buttons: [{
+                        label: 'Entendi!',
+                        cssClass: 'btn-primary',
+                        action: function (dialogItself) {
+                            dialogItself.close();
+                            $('.btnEnviarContato').button('reset');
+                            $('.email').focus();
+                        }
+                    }]
+                });
+                Email.focus();
+                return false;
+            }
+
+            if (Mensagem.length < 5) {
+                BootstrapDialog.show({
+                    title: 'Informação',
+                    message: 'Digite uma mensagem com o mínimo de 5 letras!',
+                    buttons: [{
+                        label: 'Entendi!',
+                        cssClass: 'btn-primary',
+                        action: function (dialogItself) {
+                            dialogItself.close();
+                            $('.btnEnviarContato').button('reset');
+                            $('.mensagem').focus();
+                        }
+                    }]
+                });
+                Mensagem.focus();
+                return false;
+            }
+
             $.ajax({
                 //URL -> url de Envio da informações
                 url: "FaleConosco.aspx/EnviarContato",
@@ -67,6 +139,7 @@
                                     $('.divContato').css('display', 'block');
                                     $('[data-toggle="tooltip"]').tooltip();
                                     $('.btnEnviarContato').button('reset');
+                                    $(location).attr('href', 'Home.aspx');
                                 }
                             }]
                         });
@@ -110,78 +183,78 @@
 
     <div id="lblErro"></div>
 
-    <div class="painelConteudo">
-        <div class="form-horizontal" style="display: block;">
-            <fieldset>
+    <div class="row">
+        <div class="painelConteudo">
+            <div class="form-horizontal" style="display: block;">
+                <fieldset>
 
-                <!-- Form Name -->
-                <legend>Fale com a Petra Gold</legend>
+                    <!-- Form Name -->
+                    <legend>Fale com a Petra Gold</legend>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="nome">Nome:</label>
-                    <div class="col-md-5">
-                        <input id="nome" name="nome" type="text" placeholder="Digite seu nome" class="form-control input-md nome" required="" />
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="telefone">Telefone:</label>
-                    <div class="col-md-4">
-                        <input id="telefone" name="telefone" type="text" placeholder="Digite seu telefone" class="form-control input-md telefone" required="" />
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Email:</label>
-                    <div class="col-md-5">
-                        <input id="email" name="email" type="text" placeholder="Digite o email" class="form-control input-md email" required="" />
-                    </div>
-                </div>
-
-                <!-- Select Basic -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="areaDeInteresse">Área de interesse:</label>
-                    <div class="col-md-4">
-                        <select id="areaDeInteresse" name="areaDeInteresse" class="form-control areaDeInteresse">
-                            <option value="Cambio">Câmbio</option>
-                            <option value="Investimento">Investimento</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Textarea -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="mensagem">Mensagem:</label>
-                    <div class="col-md-4">
-                        <textarea class="form-control mensagem" id="mensagem" name="mensagem"></textarea>
-                    </div>
-                </div>
-
-                <!-- Button (Double) -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="enviar"></label>
-                    <div class="col-md-8">
-                        <div id="btnEnviarContatos">
-                            <button
-                                type="button"
-                                id="btnEnviarContato"
-                                class="btn btn-success btn-lg"
-                                data-loading-text="Enviando o contato <i class='fa fa-refresh fa-spin'></i>"
-                                onclick="EnviarContato()">
-                                Enviar contato
-                            </button>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="nome">Nome:</label>
+                        <div class="col-md-5">
+                            <input id="nome" name="nome" type="text" placeholder="Digite seu nome" class="form-control input-md nome" required="" />
                         </div>
-                        <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
                     </div>
-                </div>
 
-            </fieldset>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="telefone">Telefone:</label>
+                        <div class="col-md-4">
+                            <input id="telefone" name="telefone" type="text" placeholder="Digite seu telefone" class="form-control input-md telefone" required="" />
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="email">Email:</label>
+                        <div class="col-md-5">
+                            <input id="email" name="email" type="text" placeholder="Digite o email" class="form-control input-md email" required="" />
+                        </div>
+                    </div>
+
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="areaDeInteresse">Área de interesse:</label>
+                        <div class="col-md-4">
+                            <select id="areaDeInteresse" name="areaDeInteresse" class="form-control areaDeInteresse">
+                                <option value="Cambio">Câmbio</option>
+                                <option value="Investimento">Investimento</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="mensagem">Mensagem:</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control mensagem" id="mensagem" name="mensagem"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="enviar"></label>
+                        <div class="col-md-8">
+                            <div id="containerButton">
+                                <button
+                                    type="button"
+                                    id="btnEnviarContato"
+                                    class="btn btn-success btn-lg"
+                                    data-loading-text="Enviando o contato <i class='fa fa-refresh fa-spin'></i>"
+                                    onclick="EnviarContato()">
+                                    Enviar contato
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
         </div>
     </div>
-
     <script type="text/javascript">
         $('.telefone').mask("+(00) (00) 0000-0000", { placeholder: "+(__) (__) ____-____" });
     </script>
