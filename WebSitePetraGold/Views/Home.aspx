@@ -4,7 +4,7 @@
     <%--<div class="jumbotron">
     </div>--%>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:100%; margin-left: 0%; margin-right: 0%;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -16,7 +16,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner imagensCarousel" role="listbox">
             <div class="item active">
-                <img src="/imagens/paisagem_2.jpg" alt="Petra Gold" />
+                <img src="/imagens/1a_pagina.jpg"" alt="Petra Gold" />
                 <%-- <div class="carousel-caption">
                         <h3>Chania</h3>
                         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
@@ -24,7 +24,7 @@
             </div>
 
             <div class="item">
-                <img src="/imagens/escritorio.jpg" alt="Petra Gold">
+                <img src="/imagens/1a_pagina_2.jpg"" alt="Petra Gold">
                 <%--<div class="carousel-caption">
                         <h3>Chania</h3>
                         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="item">
-                <img src="/imagens/índice.jpg" alt="Petra Gold" />
+                <img src="/imagens/cambio.jpg" alt="Petra Gold" />
                 <%--<div class="carousel-caption">
                         <h3>Flowers</h3>
                         <p>Beatiful flowers in Kolymbari, Crete.</p>
@@ -108,13 +108,13 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
             </div>
         </div>
 
-        <div class="col-md-3">
+<%--        <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3>Notícias</h3>
                 </div>
                 <div class="panel-body">
-                    <div id="info">
+                    <div id="info">--%>
 
                         <!--UOL Widgets - widgets.uol.com.br -->
                         <div class="UOLWidgetsStyle">
@@ -123,11 +123,11 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                         </div>
                         <!--//UOL Widgets-->
 
-                    </div>
+<%--                    </div>
                     <div id="info2"></div>
 
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
 </asp:Content>

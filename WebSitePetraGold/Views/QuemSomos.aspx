@@ -25,7 +25,7 @@
 
 
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:80%; margin-left: 10%; margin-right: 10%;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -82,6 +82,12 @@
         </a>
     </div>
 
+
+
+    <br />
+    <br />
+    <br />
+
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -94,8 +100,13 @@ Através de nossos parceiros e profissionais, atuamos com integridade e comprome
 Nossa equipe comercial está disponível para apresentar as soluções mais adequadas ao seu perfil.
 Entre em contato agora mesmo através do nosso formulário e um executivo de contas irá lhe atender de forma personalizada.
                 </p>
+                <br />
             </div>
+
         </div>
 
     </div>
+
+   
+
 </asp:Content>

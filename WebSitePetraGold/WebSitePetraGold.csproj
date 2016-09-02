@@ -98,6 +98,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\PainelPrincipal.aspx" />
     <Content Include="css\bootstrap-dialog.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -184,6 +185,7 @@
     </Content>
     <Content Include="TesteJson.txt" />
     <Content Include="Views\FaleConosco.aspx" />
+    <Content Include="Views\Logar.aspx" />
     <Content Include="Views\QuemSomos.aspx" />
     <Content Include="Views\_PetraGold.Master" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -196,6 +198,8 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff2__" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="admin\_admin.Master" />
+    <Content Include="admin\Web.config" />
     <None Include="Properties\PublishProfiles\PetraGold.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -216,6 +220,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\PainelPrincipal.aspx.cs">
+      <DependentUpon>PainelPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\PainelPrincipal.aspx.designer.cs">
+      <DependentUpon>PainelPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\_admin.Master.cs">
+      <DependentUpon>_admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\_admin.Master.designer.cs">
+      <DependentUpon>_admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -240,6 +258,13 @@
     </Compile>
     <Compile Include="Views\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Logar.aspx.cs">
+      <DependentUpon>Logar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Logar.aspx.designer.cs">
+      <DependentUpon>Logar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\QuemSomos.aspx.cs">
       <DependentUpon>QuemSomos.aspx</DependentUpon>
