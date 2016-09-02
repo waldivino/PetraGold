@@ -25,6 +25,8 @@
 
         function EnviarContato() {
 
+            $('#btnEnviarContato').button('loading');
+
             var Nome = $('.nome').val();
             var Telefone = $('.telefone').val();
             var Email = $('.email').val();
@@ -40,7 +42,7 @@
                         cssClass: 'btn-primary',
                         action: function (dialogItself) {
                             dialogItself.close();
-                            $('.btnEnviarContato').button('reset');
+                            $('#btnEnviarContato').button('reset');
                             $('.nome').focus();
                         }
                     }]
@@ -58,7 +60,7 @@
                         cssClass: 'btn-primary',
                         action: function (dialogItself) {
                             dialogItself.close();
-                            $('.btnEnviarContato').button('reset');
+                            $('#btnEnviarContato').button('reset');
                             $('.telefone').focus();
                         }
                     }]
@@ -76,7 +78,7 @@
                         cssClass: 'btn-primary',
                         action: function (dialogItself) {
                             dialogItself.close();
-                            $('.btnEnviarContato').button('reset');
+                            $('#btnEnviarContato').button('reset');
                             $('.email').focus();
                         }
                     }]
@@ -94,7 +96,7 @@
                         cssClass: 'btn-primary',
                         action: function (dialogItself) {
                             dialogItself.close();
-                            $('.btnEnviarContato').button('reset');
+                            $('#btnEnviarContato').button('reset');
                             $('.mensagem').focus();
                         }
                     }]
@@ -135,10 +137,9 @@
                                 cssClass: 'btn-primary',
                                 action: function (dialogItself) {
                                     dialogItself.close();
-                                    $('.btnEnviarContato').button('reset');
                                     $('.divContato').css('display', 'block');
                                     $('[data-toggle="tooltip"]').tooltip();
-                                    $('.btnEnviarContato').button('reset');
+                                    $('#btnEnviarContato').button('reset');
                                     $(location).attr('href', 'Home.aspx');
                                 }
                             }]
@@ -153,7 +154,7 @@
                                 cssClass: 'btn-primary',
                                 action: function (dialogItself) {
                                     dialogItself.close();
-                                    $('.btnEnviarContato').button('reset');
+                                    $('#btnEnviarContato').button('reset');
                                 }
                             }]
                         });

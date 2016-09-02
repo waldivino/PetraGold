@@ -83,7 +83,7 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
         </div>
 
         <br />
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3>Câmbio</h3>
@@ -108,13 +108,22 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>Cotação</h3>
+                    <h3>Notícias</h3>
                 </div>
                 <div class="panel-body">
-                    <div id="info">Carregando...</div>
+                    <div id="info">
+
+                        <!--UOL Widgets - widgets.uol.com.br -->
+                        <div class="UOLWidgetsStyle">
+                            <script src="http://widgets.uol.com.br/uolwidgetstools.js?estacao=economia&tema=noticias&skin=1" type="text/javascript"></script>
+                            <a href="http://economia.uol.com.br" target="_blank">http://economia.uol.com.br</a>
+                        </div>
+                        <!--//UOL Widgets-->
+
+                    </div>
                     <div id="info2"></div>
 
                 </div>

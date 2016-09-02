@@ -65,8 +65,20 @@ p {
     padding-right: 10%;
 }
 
-.divContato{
+.divContato {
     width: 80% !important;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+.UOLWidgetsStyle {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+#UOLWidgetsStyleECONOMIAnoticias1 > div {
+    margin-left: auto!important;
+    margin-right: auto!important;
+    width: 90%!important;
 }

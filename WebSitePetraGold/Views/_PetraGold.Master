@@ -34,39 +34,39 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
 
         <script type="text/javascript">
 
-            //Dolar $ e Euro €
-            $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22EURBRL%2CUSDBRL%22&format=json&diagnostics=false&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function (data) {
+            ////Dolar $ e Euro €
+            //$.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22EURBRL%2CUSDBRL%22&format=json&diagnostics=false&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function (data) {
 
-                var indices = '<div class="Cotacao"><p class="active "><strong>EURO</strong> R$ ' + money(data.query.results.rate[0].Rate) + '</p>' +
-                                '<p><strong>DOLAR</strong> R$ ' + money(data.query.results.rate[1].Rate) + '</p></div>';
+            //    var indices = '<div class="Cotacao"><p class="active "><strong>EURO</strong> R$ ' + money(data.query.results.rate[0].Rate) + '</p>' +
+            //                    '<p><strong>DOLAR</strong> R$ ' + money(data.query.results.rate[1].Rate) + '</p></div>';
 
-                $('#info').html(indices);
+            //    $('#info').html(indices);
 
-            });
+            //});
 
-            // IBOVESPA
-            $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20%28%22^BVSP%22%29&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function (data) {
+            //// IBOVESPA
+            //$.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20%28%22^BVSP%22%29&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function (data) {
 
-                var change = data.query.results.quote.Change;
+            //    var change = data.query.results.quote.Change;
 
-                var color = (change.indexOf('+') > -1) ? '#1f851a' : 'red';
+            //    var color = (change.indexOf('+') > -1) ? '#1f851a' : 'red';
 
-                var bovespa = '<div class="Cotacao"><p><strong>IBOVESPA</strong> ' + money(data.query.results.quote.LastTradePriceOnly) + ' <span style="color:' + color + '">' + data.query.results.quote.Change + '</span> </p></div>';
+            //    var bovespa = '<div class="Cotacao"><p><strong>IBOVESPA</strong> ' + money(data.query.results.quote.LastTradePriceOnly) + ' <span style="color:' + color + '">' + data.query.results.quote.Change + '</span> </p></div>';
 
-                $('#info2').html(bovespa);
+            //    $('#info2').html(bovespa);
 
-            });
+            //});
 
-            money = function (n) {
-                var
-                    c = 2,
-                    d = ',',
-                    t = '.',
-                    s = n < 0 ? "-" : "",
-                    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
-                    j = (j = i.length) > 3 ? j % 3 : 0;
-                return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
-            };
+            //money = function (n) {
+            //    var
+            //        c = 2,
+            //        d = ',',
+            //        t = '.',
+            //        s = n < 0 ? "-" : "",
+            //        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+            //        j = (j = i.length) > 3 ? j % 3 : 0;
+            //    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+            //};
 
         </script>
 
@@ -94,16 +94,16 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                                     <a href="/Views/QuemSomos.aspx">Quem somos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Câmbio</a>
+                                    <a href="/Views/Cambio.aspx">Câmbio</a>
                                 </li>
                                 <li>
-                                    <a href="#">Trabalhe conosco</a>
+                                    <a href="/Views/TrabalheConosco.aspx">Trabalhe conosco</a>
                                 </li>
                                 <li>
                                     <a href="/Views/FaleConosco.aspx">Fale Conosco</a>
                                 </li>
                                 <li>
-                                    <a href="#">Cadastro</a>
+                                    <a href="/Views/CadastroClientes.aspx">Cadastro de Clientes</a>
                                 </li>
                             </ul>
                         </div>
