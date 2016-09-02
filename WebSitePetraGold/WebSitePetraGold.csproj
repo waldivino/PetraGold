@@ -161,9 +161,15 @@
     <Content Include="css\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="imagens\1a_pagina.jpg" />
+    <Content Include="imagens\1a_pagina_2.jpg" />
+    <Content Include="imagens\cambio.jpg" />
     <Content Include="imagens\escritorio.jpg" />
+    <Content Include="imagens\logo_transparente.png" />
+    <Content Include="imagens\oie_transparent.png" />
     <Content Include="imagens\paisagem_2.jpg" />
     <Content Include="imagens\PetraGoldLogo.jpg" />
+    <Content Include="imagens\trabalhe-conosco.jpg" />
     <Content Include="imagens\índice.jpg" />
     <Content Include="js\bootstrap-dialog.js" />
     <Content Include="js\bootstrap.js" />
