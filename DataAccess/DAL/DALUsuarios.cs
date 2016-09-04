@@ -107,11 +107,11 @@ namespace DataAccess.DAL
                 while (dataReader.Read())
                 {
                     info = new InfoUsuarios();
-                    info.id = Convert.ToString(dataReader.GetInt32(0));
-                    info.nome = Convert.ToString(dataReader.GetInt32(1));
-                    info.usuario = Convert.ToString(dataReader.GetInt32(2));
-                    info.senha = Convert.ToString(dataReader.GetInt32(3));
-                    info.status = Convert.ToString(dataReader.GetInt32(4));
+                    info.id = Convert.ToString(dataReader["id"]);
+                    info.nome = Convert.ToString(dataReader["nome"]);
+                    info.usuario = Convert.ToString(dataReader["usuario"]);
+                    info.senha = Convert.ToString(dataReader["senha"]);
+                    info.status = Convert.ToString(dataReader["status"]);
 
                     lista.Add(info);
                 }

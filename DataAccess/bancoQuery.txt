@@ -13,15 +13,31 @@ create TABLE IF NOT EXISTS 'faleConosco'(
 	insert into faleConosco(Nome, Telefone, Email, AreaDeinteresse, AreaDeinteresse, Mensagem) values()
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  id int unsigned NOT NULL AUTO_INCREMENT,
+  id int AUTO_INCREMENT PRIMARY KEY,
   nome varchar(255) NOT NULL,
   usuario varchar(255) NOT NULL,
   senha varchar(50) NOT NULL,
   status varchar(50) NOT NULL,
   dataCadastro dateTime,
-  PRIMARY KEY (`id`),
   UNIQUE KEY usuario (usuario)
 );
+
+CREATE TABLE IF NOT EXISTS `clientes` (
+idClientes int AUTO_INCREMENT PRIMARY KEY,
+nome varchar(255) NOT NULL,
+endereco varchar(255) NOT NULL,
+telefoneFixo varchar(255) NOT NULL,
+celular varchar(255) NOT NULL,
+cpf varchar(255) NOT NULL,
+identidade varchar(255) NOT NULL,
+nacionalidade varchar(255) NOT NULL,
+naturalidade varchar(255) NOT NULL,
+dataNascimento dateTime NOT NULL,
+email varchar(255) NOT NULL,
+idUsuarios int,
+FOREIGN KEY (idUsuarios) REFERENCES `usuarios` (id));
+ 
+
 //Inserts tabela usuarios
 insert into usuarios(nome, usuario, senha, status, dataCadastro) values('Waldivino Frederico', 'fred', '100988', '1', sysdate());
 

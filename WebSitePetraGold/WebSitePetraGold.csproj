@@ -185,9 +185,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TesteJson.txt" />
+    <Content Include="Views\CadastroClientes.aspx" />
+    <Content Include="Views\Cambio.aspx" />
     <Content Include="Views\FaleConosco.aspx" />
     <Content Include="Views\Logar.aspx" />
     <Content Include="Views\QuemSomos.aspx" />
+    <Content Include="Views\TrabalheConosco.aspx" />
     <Content Include="Views\_PetraGold.Master" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -253,6 +256,20 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Views\CadastroClientes.aspx.cs">
+      <DependentUpon>CadastroClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CadastroClientes.aspx.designer.cs">
+      <DependentUpon>CadastroClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cambio.aspx.cs">
+      <DependentUpon>Cambio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cambio.aspx.designer.cs">
+      <DependentUpon>Cambio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\FaleConosco.aspx.cs">
       <DependentUpon>FaleConosco.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -280,6 +297,13 @@
     </Compile>
     <Compile Include="Views\QuemSomos.aspx.designer.cs">
       <DependentUpon>QuemSomos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrabalheConosco.aspx.cs">
+      <DependentUpon>TrabalheConosco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TrabalheConosco.aspx.designer.cs">
+      <DependentUpon>TrabalheConosco.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\_PetraGold.Master.cs">
       <DependentUpon>_PetraGold.Master</DependentUpon>

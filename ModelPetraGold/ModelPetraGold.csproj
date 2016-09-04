@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\InfoClientes.cs" />
     <Compile Include="Model\InfoContato.cs" />
     <Compile Include="Model\InfoEmail.cs" />
     <Compile Include="Model\InfoUsuarios.cs" />
