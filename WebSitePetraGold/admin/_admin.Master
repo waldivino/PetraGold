@@ -32,33 +32,169 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
         <script src="../js/bootstrap-dialog.js"></script>
         <script src="../js/jquery.mask.js"></script>
 
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+            });
+
+            function Logout() {
+
+                $('#btnLogout').button('loading');
+               
+
+                $.ajax({
+                    //URL -> url de Envio da informações
+                    url: "Logout.aspx/Sair",
+
+                    //Type -> Qual o tipo de envio da informações
+                    type: "POST",
+
+                    //Content Type -> Tipo de Mensagem de conteudo
+                    contentType: "application/json; charset=utf-8",
+
+                    //Data Type -> Tipo da mensagem
+                    dataType: "json",
+
+                    //Data -> Parametros a serem enviados
+                    //data: JSON.stringify({ 'usuario': usuario, 'senha': senha }),
+
+                    //Success -> Retorno com Sucesso do servidor
+                    success: function (data) {
+
+                        var json = $.parseJSON(data.d);
+
+                        if (json.Info != "Error") {
+                            BootstrapDialog.show({
+                                title: 'Informação',
+                                message: 'Sr(ª) cliente volte sempre !',
+                                buttons: [{
+                                    label: 'Entendi!',
+                                    cssClass: 'btn-primary',
+                                    action: function (dialogItself) {
+                                        dialogItself.close();
+                                        $('[data-toggle="tooltip"]').tooltip();
+                                        $('#btnLogout').button('reset');
+                                        $(location).attr('href', '../Views/Home.aspx');
+                                    }
+                                }]
+                            });
+                        }
+                        else {
+                            BootstrapDialog.show({
+                                title: 'Informação',
+                                type: BootstrapDialog.TYPE_DANGER,
+                                message: json.Message,
+                                buttons: [{
+                                    label: 'Entendi!',
+                                    cssClass: 'btn-primary',
+                                    action: function (dialogItself) {
+                                        dialogItself.close();
+                                        $('#btnLogout').button('reset');
+                                    }
+                                }]
+                            });
+                        }
+                    },
+                    //Error -> Caso tenha erro no servidor apresento o erro
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        var json = $.parseJSON(XMLHttpRequest.responseText);
+                        $('#lblErro').html(json.Message);
+                    }
+                });
+            }
+
+        </script>
 
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="formConteudo" runat="server">
-        <div class="container-fluid">
-            <%--Aquí entra o menu do painel--%>
-            <div class="row">
-            </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="navbar navbar-default navbar-fixed-top topoMenu" role="navigation">
+                                <div class="navbar-header">
 
-            <asp:ContentPlaceHolder ID="Conteudo" runat="server">
-            </asp:ContentPlaceHolder>
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="/Views/Home.aspx">
+                                        <img src="/imagens/logo_transparente.png" class="logo" /></a>
+                                </div>
 
-            <br />
-            <br />
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float: left;">
+                                    <ul class="nav navbar-nav">
+                                        <%--class="active"--%>
+                                        <li>
+                                            <%--<a href="/Views/QuemSomos.aspx">Quem somos</a>--%>
+                                        </li>
+<%--                                        <li>
+                                            <a href="/Views/Cambio.aspx">Câmbio</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Views/TrabalheConosco.aspx">Trabalhe conosco</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Views/FaleConosco.aspx">Fale Conosco</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Views/CadastroClientes.aspx">Cadastro de Clientes</a>
+                                        </li>--%>
+                                        <li>
+                                            <div class="navbar-header">
+                                                <button
+                                                    class="btn btn-default"
+                                                    type="submit"
+                                                    style="margin-top: 8px; margin-left: 30px;"
+                                                    data-toggle="modal"
+                                                    data-target="#login-modal">
+                                                    Sair
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
 
-            <div class="rodape">
-                <address class="addressTopo">Remessas internacionais | Moedas | Ações | Clubes | Fundos | Renda Fixa</address>
-                <hr class="linhaRodape" />
-                <address class="addressMeio">Praça Floriano 55 - 8º andar - SL. 803 - Cinelândia - Rio de Janeiro- RJ - 20031-050</address>
-                <address class="addressBottom">Tel: +55 21 3179-0651 | www.petrogold.com.br</address>
-            </div>
-        </div>
-    </form>
+                            </nav>
+                        </div>
+                    </div>
 
 
-    <script src="../js/scripts.js"></script>
+                    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="loginmodal-container">
+                                <div id="containerButton">
+                                    <button
+                                        type="button"
+                                        id="btnLogout"
+                                        class="login loginmodal-submit btn-lg"
+                                        data-loading-text="Saindo da área do cliente <i class='fa fa-refresh fa-spin'></i>"
+                                        onclick="Logout()"
+                                        style="width: 296px;">
+                                        Quero sair da área do cliente
+                                    </button>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <asp:ContentPlaceHolder ID="Conteudo" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                    <br />
+                    <br />
+
+                    <div class="rodape">
+                        <address class="addressTopo">Remessas internacionais | Moedas | Ações | Clubes | Fundos | Renda Fixa</address>
+                        <hr class="linhaRodape" />
+                        <address class="addressMeio">Praça Floriano 55 - 8º andar - SL. 803 - Cinelândia - Rio de Janeiro- RJ - 20031-050</address>
+                        <address class="addressBottom">Tel: +55 21 3179-0651 | www.petrogold.com.br</address>
+                    </div>
+                </div>
+            </form>
+
+
+            <script src="../js/scripts.js"></script>
 </body>
 </html>

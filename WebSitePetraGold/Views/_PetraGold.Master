@@ -86,7 +86,7 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
 
                 $.ajax({
                     //URL -> url de Envio da informações
-                    url: "Logar.aspx/login",
+                    url: "Logar.aspx/Login",
 
                     //Type -> Qual o tipo de envio da informações
                     type: "POST",
@@ -106,8 +106,20 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                         var json = $.parseJSON(data.d);
 
                         if (json.Info != "Error") {
-
-                            $(location).attr('href', 'PainelPrincipal.aspx');
+                            BootstrapDialog.show({
+                                title: 'Informação',
+                                message: 'Seja bem vindo na Área do Cliente Petra Gold - Câmbio e Investimentos !',
+                                buttons: [{
+                                    label: 'Entendi!',
+                                    cssClass: 'btn-primary',
+                                    action: function (dialogItself) {
+                                        dialogItself.close();
+                                        $('[data-toggle="tooltip"]').tooltip();
+                                        $('#btnLogar').button('reset');
+                                        $(location).attr('href', '../admin/PainelPrincipal.aspx');
+                                    }
+                                }]
+                            });
                         }
                         else {
                             BootstrapDialog.show({
@@ -128,9 +140,6 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                     //Error -> Caso tenha erro no servidor apresento o erro
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         var json = $.parseJSON(XMLHttpRequest.responseText);
-
-                        $('#menu1').removeClass("active");
-                        $('#menu3').addClass("active");
                         $('#lblErro').html(json.Message);
                     }
                 });
@@ -175,18 +184,21 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                                 <li>
                                     <a href="/Views/CadastroClientes.aspx">Cadastro de Clientes</a>
                                 </li>
+                                <li>
+                                    <div class="navbar-header">
+                                        <button
+                                            class="btn btn-default"
+                                            type="submit"
+                                            style="margin-top: 8px; margin-left: 30px;"
+                                            data-toggle="modal"
+                                            data-target="#login-modal">
+                                            Área do Cliente
+                                        </button>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
-                        <div class="navbar-header">
-                            <button
-                                class="btn btn-default"
-                                type="submit"
-                                style="margin-left: 70%; margin-right: 10%; margin-top: 10px; margin-top: 1px; height: 50px;"
-                                data-toggle="modal"
-                                data-target="#login-modal">
-                                Área do Cliente
-                            </button>
-                        </div>
+
                     </nav>
                 </div>
             </div>
@@ -200,7 +212,16 @@ Entre em contato agora mesmo através do nosso formulário e um executivo de con
                         <input type="text" name="usuario" id="usuario" placeholder="Usuário" />
                         <input type="password" name="senha" id="senha" placeholder="Senha" />
 
-                        <input type="submit" name="login" id="btnLogar" class="login loginmodal-submit" value="Entrar" onclick="Login()"/>
+                        <div id="containerButton">
+                                        <button
+                                            type="button"
+                                            id="btnLogar"
+                                            class="login loginmodal-submit btn-lg"
+                                            data-loading-text="Logando no Sistema <i class='fa fa-refresh fa-spin'></i>"
+                                            onclick="Login()">
+                                            Entrar
+                                        </button>
+                                    </div>
 
                         <div class="login-help">
                             <a href="#">Criar meu cadastro</a> ou <a href="#">Esqueceu sua senha ?</a>

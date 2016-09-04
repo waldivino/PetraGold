@@ -1,13 +1,25 @@
 ﻿
 Use petragold;
 
-create table faleConosco(
+create TABLE IF NOT EXISTS 'faleConosco'(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	Nome varchar(255),
     Telefone varchar(255),
     Email varchar(555),
     AreaDeinteresse varchar(255),
     Mensagem varchar(5000));
+
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `senha` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usuario` (`usuario`)
+);
+
+
 
 
 

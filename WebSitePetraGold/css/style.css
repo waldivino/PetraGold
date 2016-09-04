@@ -13,6 +13,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: auto;
 }
 
+
+
 :focus {
     outline: 0;
 }
@@ -46,6 +48,20 @@ select {
 
 a {
     text-decoration: none;
+}
+
+
+#btnLogar {
+    height: 58px;
+    margin-bottom: 19px;
+    width: 288px;
+    margin-right: 0px;
+    margin-top: 2px;
+}
+
+#PainelPrincipal{
+    width: 90%;
+    height: 500px;
 }
 
 
@@ -2615,9 +2631,9 @@ button.close {
 
 /* Fim dos Style de Title */
 
-.centralizarBotoes{
+.centralizarBotoes {
     width: 100%;
-    margin-left: auto!important;
-    margin-right: auto!important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     padding: 20px;
 }

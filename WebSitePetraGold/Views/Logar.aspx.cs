@@ -21,7 +21,7 @@ namespace WebSitePetraGold.Views
 
 
         [WebMethod]
-        public static string login(string usuario, string senha)
+        public static string Login(string usuario, string senha)
         {
 
             string json = "";
@@ -31,37 +31,31 @@ namespace WebSitePetraGold.Views
 
             try
             {
-                //if (usuario == null)
-                //{
-                //    info = new InfoJSon();
-                //    info.Info = "Error";
-                //    info.Data = "";
-                //    info.Message = "Usuário de sessão não está conectado!";
-                //}
-
                 if (info == null)
                 {
 
-                    //if (usuario.Equals("") & senha.Equals("")) //se usuario não é nulo
-                    //{
-                    HttpContext.Current.Session.Add("usuario", usuario);
-                    //gravando o objeto Usuario em sessão
-                    evento.Authenticated = true;
-                    //}
-                    //else
-                    //{
-                    // evento.Authenticated = false;
-                    //}
+                    if (usuario.Equals("fred") & senha.Equals("fred")) //se usuario não é nulo
+                    {
+                        HttpContext.Current.Session.Add("usuario", usuario);
+                        //gravando o objeto Usuario em sessão
+                        evento.Authenticated = true;
 
+                        info = new InfoJSon();
+                        info.Info = "ResultOk";
+                        info.Data = "";
+                        info.Message = "Logado no sistema com sucesso!";
 
-                    info = new InfoJSon();
-                    info.Info = "ResultOk";
-                    info.Data = "";
-                    info.Message = "Logado no sistema com sucesso!";
+                    }
+                    else
+                    {
+                        HttpContext.Current.Session["usuario"] = null;
+                        evento.Authenticated = false;
 
-                    //HttpContext.Current.Response.Redirect("~/admin/PainelPrincipal.aspx", false);
-                    //HttpContext.Current.ApplicationInstance.CompleteRequest();
-
+                        info = new InfoJSon();
+                        info.Info = "Error";
+                        info.Data = "";
+                        info.Message = "Usuário ou senha não são válidos, por favor tente novamente!";
+                    }
                 }
 
                 json = JsonConvert.SerializeObject(info);
@@ -81,24 +75,6 @@ namespace WebSitePetraGold.Views
                 return json;
             }
 
-        }
-
-        [WebMethod]
-        public static string sair(AuthenticateEventArgs evento)
-        {
-            try
-            {
-                string json = "";
-
-                evento.Authenticated = false;
-                HttpContext.Current.Session["Usuario"] = null;
-
-                return json;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
         }
 
     }

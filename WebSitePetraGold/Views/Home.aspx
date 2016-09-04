@@ -16,7 +16,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner imagensCarousel" role="listbox">
             <div class="item active">
-                <img src="/imagens/1a_pagina.jpg"" alt="Petra Gold" />
+                <img src="/imagens/1a_pagina.jpg" alt="Petra Gold" />
                 <%-- <div class="carousel-caption">
                         <h3>Chania</h3>
                         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
