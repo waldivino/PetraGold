@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using ModelPetraGold.Model;
+using Newtonsoft.Json;
+using PetraGoldComum.BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,31 +28,29 @@ namespace WebSitePetraGold.Views
 
             string json = "";
             InfoJSon info = null;
-
-            AuthenticateEventArgs evento = new AuthenticateEventArgs();
-
             try
             {
                 if (info == null)
                 {
+                    BLLLogin bll = new BLLLogin();
+                    InfoUsuarios infoUsuario = null;
 
-                    if (usuario.Equals("fred") & senha.Equals("fred")) //se usuario não é nulo
+                    infoUsuario = bll.BDEfetuarLogin(usuario, senha);
+
+                    if (!Equals(infoUsuario, null)) //se usuario não é nulo
                     {
-                        HttpContext.Current.Session.Add("usuario", usuario);
-                        //gravando o objeto Usuario em sessão
-                        evento.Authenticated = true;
-
-                        info = new InfoJSon();
-                        info.Info = "ResultOk";
-                        info.Data = "";
-                        info.Message = "Logado no sistema com sucesso!";
-
+                        if (infoUsuario.usuario.Equals(usuario) & infoUsuario.senha.Equals(senha))
+                        {
+                            HttpContext.Current.Session["usuario"] = usuario;
+                            info = new InfoJSon();
+                            info.Info = "ResultOk";
+                            info.Data = "";
+                            info.Message = "Logado no sistema com sucesso!";
+                        }
                     }
-                    else
+                    else if (Equals(infoUsuario, null))
                     {
                         HttpContext.Current.Session["usuario"] = null;
-                        evento.Authenticated = false;
-
                         info = new InfoJSon();
                         info.Info = "Error";
                         info.Data = "";

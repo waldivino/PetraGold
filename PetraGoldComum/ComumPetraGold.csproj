@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLAbstract\BLLAbstractFaleConosco.cs" />
+    <Compile Include="BLLAbstract\BLLAsbtractUsuarios.cs" />
     <Compile Include="BLL\BLLEnviarContato.cs" />
+    <Compile Include="BLL\BLLLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

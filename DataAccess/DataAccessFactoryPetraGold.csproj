@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\DALEnviarContato.cs" />
+    <Compile Include="DAL\DALUsuarios.cs" />
     <Compile Include="FABRICA\ConnectionFactory.cs" />
     <Compile Include="FABRICA\MySqlFactory.cs" />
     <Compile Include="INFO\InfoEnum.cs" />
