@@ -16,7 +16,6 @@ namespace WebSitePetraGold.admin
         {
 
         }
-
         [WebMethod]
         public static string Sair()
         {
